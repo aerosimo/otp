@@ -2,9 +2,9 @@
  * This piece of work is to enhance OTP project functionality.                *
  *                                                                            *
  * Author:    eomisore                                                        *
- * File:      OneTimePasscode.java                                            *
- * Created:   28/10/2021, 00:55                                               *
- * Modified:  28/10/2021, 00:55                                               *
+ * File:      LogTest.java                                                    *
+ * Created:   28/10/2021, 03:31                                               *
+ * Modified:  28/10/2021, 03:31                                               *
  *                                                                            *
  * Copyright (c)  2021.  Aerosimo Ltd                                         *
  *                                                                            *
@@ -29,27 +29,55 @@
  *                                                                            *
  ******************************************************************************/
 
-import java.util.Random;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-public class OneTimePasscode {
+class LogTest {
 
-    public static String getOTP() {
-        String response;
-        String CHAR_LIST;
-        CHAR_LIST = "1234567890";
-        int RANDOM_STRING_LENGTH;
-        RANDOM_STRING_LENGTH = 6;
-        StringBuilder randStr;
-        randStr = new StringBuilder();
-        for (int i = 0; i < RANDOM_STRING_LENGTH; i++) {
-            int randomInt;
-            Random randomGenerator = new Random();
-            randomInt = randomGenerator.nextInt(CHAR_LIST.length());
-            char ch = CHAR_LIST.charAt(randomInt);
-            randStr.append(ch);
-        }
-        response = randStr.toString();
-        Log.info("Passcode Generation {" + response + "} is successful");
-        return response;
+    @BeforeEach
+    void setUp() {
+        Log.info("Starting Log Test");
+    }
+
+    @AfterEach
+    void tearDown() {
+        Log.info("Log Test complete");
+    }
+    @Test
+    @DisplayName("Checking Info Level Logs")
+    void info() {
+        Log.info("Designates informational messages that highlight the progress of the application at coarse-grained level.");
+    }
+
+    @Test
+    @DisplayName("Checking Warn Level Logs")
+    void warn() {
+        Log.warn("Designates potentially harmful situations.");
+    }
+
+    @Test
+    @DisplayName("Checking Error Level Logs")
+    void error() {
+        Log.error("Designates error events that might still allow the application to continue running.");
+    }
+
+    @Test
+    @DisplayName("Checking Fatal Level Logs")
+    void fatal() {
+        Log.fatal("Designates very severe error events that will presumably lead the application to abort.");
+    }
+
+    @Test
+    @DisplayName("Checking Debug Level Logs")
+    void debug() {
+        Log.debug("Designates fine-grained informational events that are most useful to debug an application.");
+    }
+
+    @Test
+    @DisplayName("Checking Trace Level Logs")
+    void trace() {
+        Log.trace("Designates finer-grained informational events than the DEBUG.");
     }
 }

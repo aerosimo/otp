@@ -29,31 +29,23 @@
  *                                                                            *
  ******************************************************************************/
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class OneTimePasscodeTest {
 
-    static Logger log;
-
-    static {
-        log = LogManager.getLogger(OneTimePasscodeTest.class.getName());
-    }
-
     @BeforeEach
     void setUp() {
-        log.info("Starting One Time Passcode Test");
+        Log.info("Starting One Time Passcode Test");
     }
 
     @AfterEach
     void tearDown() {
-        log.info("One Time Passcode Test complete");
+        Log.info("One Time Passcode Test complete");
     }
 
     @Test

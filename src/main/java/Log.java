@@ -2,9 +2,9 @@
  * This piece of work is to enhance OTP project functionality.                *
  *                                                                            *
  * Author:    eomisore                                                        *
- * File:      OneTimePasscode.java                                            *
- * Created:   28/10/2021, 00:55                                               *
- * Modified:  28/10/2021, 00:55                                               *
+ * File:      Log.java                                                        *
+ * Created:   28/10/2021, 03:29                                               *
+ * Modified:  28/10/2021, 03:29                                               *
  *                                                                            *
  * Copyright (c)  2021.  Aerosimo Ltd                                         *
  *                                                                            *
@@ -29,27 +29,40 @@
  *                                                                            *
  ******************************************************************************/
 
-import java.util.Random;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class OneTimePasscode {
+public class Log {
 
-    public static String getOTP() {
-        String response;
-        String CHAR_LIST;
-        CHAR_LIST = "1234567890";
-        int RANDOM_STRING_LENGTH;
-        RANDOM_STRING_LENGTH = 6;
-        StringBuilder randStr;
-        randStr = new StringBuilder();
-        for (int i = 0; i < RANDOM_STRING_LENGTH; i++) {
-            int randomInt;
-            Random randomGenerator = new Random();
-            randomInt = randomGenerator.nextInt(CHAR_LIST.length());
-            char ch = CHAR_LIST.charAt(randomInt);
-            randStr.append(ch);
-        }
-        response = randStr.toString();
-        Log.info("Passcode Generation {" + response + "} is successful");
-        return response;
+    //Initialize Log4j instance
+    private static final Logger Log;
+
+    static {
+        Log = LogManager.getLogger(Log.class.getName());
+    }
+
+    //Info Level Logs
+    public static void info (String message) {
+        Log.info(message);
+    }
+    //Warn Level Logs
+    public static void warn (String message) {
+        Log.warn(message);
+    }
+    //Error Level Logs
+    public static void error (String message) {
+        Log.error(message);
+    }
+    //Fatal Level Logs
+    public static void fatal (String message) {
+        Log.fatal(message);
+    }
+    //Debug Level Logs
+    public static void debug (String message) {
+        Log.debug(message);
+    }
+    //Trace Level Logs
+    public static void trace (String message) {
+        Log.trace(message);
     }
 }

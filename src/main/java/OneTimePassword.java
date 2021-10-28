@@ -1,8 +1,3 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.util.Random;
-
 /******************************************************************************
  * This piece of work is to enhance OTP project functionality.                *
  *                                                                            *
@@ -34,13 +29,9 @@ import java.util.Random;
  *                                                                            *
  ******************************************************************************/
 
+import java.util.Random;
+
 public class OneTimePassword {
-
-    static Logger log;
-
-    static {
-        log = LogManager.getLogger(OneTimePassword.class.getName());
-    }
 
     public static String getOTP() {
         String response;
@@ -58,7 +49,7 @@ public class OneTimePassword {
             randStr.append(ch);
         }
         response = randStr.toString();
-        log.info("Password Generation {" + response + "} is successful");
+        Log.info("Password Generation {" + response + "} is successful");
         return response;
     }
 }
